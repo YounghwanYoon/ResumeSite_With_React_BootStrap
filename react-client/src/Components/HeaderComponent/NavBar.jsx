@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import {Nav, Navbar, NavbarBrand,NavbarToggle, NavbarCollapse, NavbarToggle, NavLink, NavDropdown, NavDropdownItem,NavDropdownDivider} from'reactstrap';
 
-class NavBar extends React.Component {
+class Navigation extends React.Component {
 
   constructor(props){
     super(props);
@@ -50,18 +51,25 @@ class NavBar extends React.Component {
 */
   render() {
     return (
-      <header className="header">
-        <Logo/>
-        <nav className = "mainNav">
-          <ul className="main-nav-list" id="main-nav-list">
-            <li id="not_selected" ><Link to ="/Home" id="Home" onClick = {this.updateState}>Home</Link></li>
-            <li id="not_selected"><Link to="/Project" id="Project" onClick = {this.updateState} >Projects</Link></li>
-            <li id="not_selected"><Link to="/Resume" id="Resume" onClick = {this.updateState} >Resume</Link></li>
-            <li id="not_selected"><Link to="/Contact" id="Contact" onClick = {this.updateState} >Contact</Link></li>
-          </ul>
-        </nav>
-      </header>
+      <Navbar className = "mainNav" bg="light" expand="lg">
+        <NavbarBrand href="#home">React-Bootstrap</NavbarBrand>
+        <NavbarToggle aria-controls="basic-navbar-nav" />
+        <NavbarCollapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <NavLink href="../BodyComponent/Home.jsx">Home</NavLink>
+            <NavLink href="../BodyComponent/Resume.jsx">Resume</NavLink>
+            <NavLink href="../BodyComponent/Contact.jsx">Contact</NavLink>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdownItem href="#action/3.1">Action</NavDropdownItem>
+              <NavDropdownItem href="#action/3.2">Another action</NavDropdownItem>
+              <NavDropdownItem href="#action/3.3">Something</NavDropdownItem>
+              <NavDropdownDivider />
+              <NavDropdownItem href="#action/3.4">Separated link</NavDropdownItem>
+            </NavDropdown>
+          </Nav>
+        </NavbarCollapse>
+      </Navbar>
     )
   }
 }
-export default NavBar;
+export default Navigation;
